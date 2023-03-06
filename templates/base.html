@@ -1,0 +1,23 @@
+{# DISPLAY : Block, Inline, Inline-block, None #}
+{# SIZE : px, em, rem, % #}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+
+    <hr>
+    {#  accountapp/templates/accountapp/hello_world.html  #}
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>
+
