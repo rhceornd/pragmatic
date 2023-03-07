@@ -3,21 +3,28 @@
 
 {% block content %}
 
-    <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-        <h1>
-            testing
+    <div style="border-radius: 1rem; margin: 2rem; text-align: center;">
+        <h1 style="font-family: 'Playfair Display', cursive;">
+            Hello World LIST!
         </h1>
 
-        {#    post    #}
-{#        <form action="/accountapp/hello_world/" method="post">#}
-            {# csrf_token를 form 안에 명시해야함 : 보안기능#}
-{#            {% csrf_token %}#}
-{#            <input type="submit" class="btn btn-primary" value="POST">#}
-{#        </form>#}
-{##}
-{#        <h1>#}
-{#            {{ text }}#}
-{#        </h1>#}
+        {# 데이터 명세서 : 해당 주소로 post를 사용하여 요청을 보냄 -> 그를 위한 interaction button #}
+        <form action="/account/hello_world/" method="post">
+            {# csrf_token를 form 안에 명시해야함 : 보안기능 #}
+            {% csrf_token %}
+            <div>
+                <input type="text" name="hello_world_input">
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="POST">
+            </div>
+        </form>
+        {#  hello_world_output이 있다면 실행  #}
+        {% if hello_world_output %}
+        <h1>
+            {{ hello_world_output.text }}
+        </h1>
+        {% endif %}
 
     </div>
 
