@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="text-align: center">
+        {# 기존 action="/account/create" 에서 일원화를 위해 '앱이름:url이름(라우팅)'으로 작성 #}
+        <form action="{% url 'accountapp:create' %}" method="post">
+            {% csrf_token %}
+            {# views.py/AccountCreateView/form_class에 있는 form을 자동으로 읽음 #}
+            {{ form }}
+            <input type="submit" class="btn btn-primary">
+        </form>
+
+    </div>
+
+{% endblock %}
