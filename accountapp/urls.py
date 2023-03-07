@@ -2,9 +2,11 @@
 from django.contrib import admin
 from django.urls import path
 
+import accountapp.views
+
 from accountapp.views import hello_world
 
-app_name = "accoutapp"
+app_name = "accountapp"
 
 
 urlpatterns = [
