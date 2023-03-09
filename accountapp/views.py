@@ -25,9 +25,7 @@ def hello_world(request):
         return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
 
 
-# class based view.
-# 장고에서 user 관련하여 지원해줌
-class AccountCreateView(CreateView):
+class AccountCreateView(CreateView):    # class based view. 장고에서 user 관련하여 지원해줌
     model = User
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:hello_world') # 어느 경로로 다시 재배정    class는 reverse_lazy 사용

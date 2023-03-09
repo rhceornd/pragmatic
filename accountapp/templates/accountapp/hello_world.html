@@ -9,7 +9,8 @@
         </h1>
 
         {# 데이터 명세서 : 해당 주소로 post를 사용하여 요청을 보냄 -> 그를 위한 interaction button #}
-        <form action="/account/hello_world/" method="post">
+{#        <form action="/account/hello_world/" method="post">#}
+        <form action="{% url 'accountapp:hello_world' %}" method="post">
             {# csrf_token를 form 안에 명시해야함 : 보안기능 #}
             {% csrf_token %}
             <div>

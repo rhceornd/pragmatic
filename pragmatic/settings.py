@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accountapp',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -139,7 +140,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# Next 인자, redirect url, default
+# Next 인자, redirect url, default // login or logout이 끝난 후 돌아갈 주소
 LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
 
