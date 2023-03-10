@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 # from . import views
 
-from accountapp.views import hello_world, AccountCreateView, AccountDetailView, AccountUpdateView
+from accountapp.views import hello_world, AccountCreateView, AccountDetailView, AccountUpdateView, AccountDeleteView
 
 app_name = "accountapp"
 
@@ -18,7 +18,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
 
     path('create/', AccountCreateView.as_view(), name='create'), # 클래스형 뷰는 as_view() 추가
-    path('detail/<int:pk>', AccountDetailView.as_view(), name='detail'), # 클래스형 뷰는 as_view() 추가
-    path('update/<int:pk>', AccountUpdateView.as_view(), name='update'), # 클래스형 뷰는 as_view() 추가
+    path('detail/<int:pk>', AccountDetailView.as_view(), name='detail'),
+    path('update/<int:pk>', AccountUpdateView.as_view(), name='update'),
+    path('delete/<int:pk>', AccountDeleteView.as_view(), name='delete'),
 
 ]

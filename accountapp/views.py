@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
@@ -40,8 +40,13 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
-class AccountUpdateView(UpdateView):    # class based view. 장고에서 user 관련하여 지원해줌
+class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountUpdateForm
-    success_url = reverse_lazy('accountapp:hello_world') # 어느 경로로 다시 재배정    class는 reverse_lazy 사용
+    success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/update.html'
+
+class AccountDeleteView(DeleteView):
+    model = User
+    success_url = reverse_lazy('accountapp:login')
+    template_name = 'accountapp/delete.html'
