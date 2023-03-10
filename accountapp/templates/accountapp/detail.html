@@ -1,0 +1,23 @@
+{# accountapp/detail.html #}
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div>
+        <div style="text-align: center; max-width: 500px; margin: 4rem auto">
+            <p>
+                {{ target_user.date_joined }}
+            </p>
+            <h2 style="font-family: 'NanumSquareB'">
+                User : {{ target_user.username }}
+            </h2>
+            <h2 style="font-family: 'NanumSquareB'">
+                Target User : {{ user.username }}
+
+            </h2>
+        </div>
+
+    </div>
+
+{% endblock %}
