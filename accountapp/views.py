@@ -65,6 +65,7 @@ class AccountDeleteView(DeleteView):
     success_url = reverse_lazy('accountapp:login')
     template_name = 'accountapp/delete.html'
 
+# method_decorator는 def에서 사용하는 decorator를 class에서도 사용할 수 있도록 해줌
 '''
 @method_decorator(login_required, 'get')
 @method_decorator(login_required, 'post')
