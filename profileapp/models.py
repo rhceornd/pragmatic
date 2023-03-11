@@ -13,6 +13,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')   # Profile and user 1:1 matching
 
-    image = models.ImageField(upload_to='profile/', null=True) # /media/profile 에 저장
-    nickname = models.CharField(max_length=20, unique=True, null=True) # class Profile 안에서 unique 해야함
+    image = models.ImageField(upload_to='profile/', null=True)  # /media/profile 에 저장
+    nickname = models.CharField(max_length=20, unique=True, null=True)  # class Profile 안에서 unique 해야함
     message = models.CharField(max_length=100, null=True)

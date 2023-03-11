@@ -12,6 +12,7 @@ from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
 
+
 has_ownership = [account_ownership_required, login_required]
 
 @login_required # if login, do func. Or go to login
