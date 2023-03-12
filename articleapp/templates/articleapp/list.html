@@ -1,0 +1,67 @@
+{# articleapp/list.html #}
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .container div {
+        width: 280px;
+        {#height: 500px;#}
+        background-color: antiquewhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+        }
+
+        .container img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+        {#.container .item1 { height: 200px; }#}
+        {#.container .item4 { height: 800px; }#}
+        {#.container .item6 { height: 600px; }#}
+        {#.container .item11 { height: 400px; }#}
+    </style>
+
+    <!DOCTYPE html>
+    <div class="container">
+        <div class="item1">
+            <img src="https://picsum.photos/200/300" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/340" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/270" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/380" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/400" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/280" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/230" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/490" alt="">
+        </div>
+        <div>
+            <img src="https://picsum.photos/200/440" alt="">
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/magicgrid.js' %}">
+
+    </script>
+
+
+
+{% endblock %}
