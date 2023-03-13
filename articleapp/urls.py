@@ -3,14 +3,14 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
-from articleapp.views import ArticleCreateView, ArticleDetailView, ArticleUpdateView, ArticleDeleteView
+from articleapp.views import ArticleCreateView, ArticleDetailView, ArticleUpdateView, ArticleDeleteView, ArticleListView
 
 app_name = "articleapp"
 
 # 127.0.0.1:8000/article/
 
 urlpatterns = [
-    path('list/', TemplateView.as_view(template_name='articleapp/list.html'), name='list'),
+    path('list/', ArticleListView.as_view(), name='list'),
 
     path('create/', ArticleCreateView.as_view(template_name='articleapp/create.html'), name='create'),
     path('detail/<int:pk>', ArticleDetailView.as_view(template_name='articleapp/detail.html'), name='detail'),
