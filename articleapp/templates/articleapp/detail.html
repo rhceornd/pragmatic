@@ -1,4 +1,5 @@
-{# article/detail.html #}
+{# articleapp/detail.html #}
+
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 
@@ -31,6 +32,9 @@
             </a>
             {% endif %}
             <hr>
+
+            {% include 'commentapp/create.html' with article=target_article %}      {# commentapp/create.html 안에서 article 변수 사용 가능 #}
+
         </div>
 
     </div>

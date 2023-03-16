@@ -11,7 +11,7 @@
         <form action="{% url 'accountapp:create' %}" method="post">
             {% csrf_token %}
             {# views.py/AccountCreateView/form_class에 있는 form을 자동으로 읽음 #}
-{#            {{ form }}#}
+            {# {{ form }}#}
             {% bootstrap_form form %}
             <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
