@@ -15,3 +15,9 @@
     text-align: center;
     margin: 2rem 0;
 }
+/* screen 너비가 500 이하일 경우 전체 폰드 사이즈 16->13px*/
+@media screen and (max-width: 500px) {
+    html {
+        font-size: 13px;
+    }
+}
