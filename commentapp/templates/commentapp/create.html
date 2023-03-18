@@ -13,15 +13,13 @@
             {% if user.is_authenticated %}
                 <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
             {% else %}
-                <a href="{% url 'accountapp:create' %}?next={{ request.path }}" {# 되돌아 갈 곳 #}
-                    class="btn btn-dark rounded-pill col-6 mt-3>
+                <a href="{% url 'accountapp:login' %}?next={{ request.path }}" {# 되돌아 갈 곳 #}
+                    class="btn btn-dark rounded-pill col-6 mt-3">
                 Login
                 </a>
-
-
             {% endif %}
 
-            <input type="hidden" name="article_pk" value="{{ article.pk }}"    {# 현재 article pk가 무엇인지 value값을 통해 서버에 넘겨 comment 완성 #}
+            <input type="hidden" name="article_pk" value="{{ article.pk }}">    {# 현재 article pk가 무엇인지 value값을 통해 서버에 넘겨 comment 완성 #}
 
         </form>
 
