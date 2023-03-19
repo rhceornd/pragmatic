@@ -19,9 +19,10 @@
             <img style="width: 100%; border-radius: 1rem; margin: 2rem 0;"
                     src="{{ target_article.image.url }}" alt="">
 
-            <p>
-                context : {{ target_article.content }}
-            </p>
+            {# forms에 있는 수정된 content를 그대로 뿌려 태그까지 나오는 것을 방지하기 위해 코드 수정 --> | safe : 태그 필터링 #}
+            <div class="text-left">
+                context : {{ target_article.content | safe }}
+            </div>
 
             {% if target_article.writer == user %}
             <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-primary rounded-pill col-3">
