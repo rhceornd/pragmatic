@@ -2,13 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, ListView
 
+from articleapp.models import Article
 from projectapp.models import Project
 from subscribeapp.models import Subscription
 
-
-# Create your views here.
 
 @method_decorator(login_required, 'get')
 class SubscriptionView(RedirectView):
@@ -34,3 +33,16 @@ class SubscriptionView(RedirectView):
 
 
         return super(SubscriptionView, self).get(request, *args, **kwargs)
+
+@method_decorator(login_required, 'get')
+class SubscriptionListView(ListView):
+    model = Article
+    context_object_name = 'article_list'
+    template_name = 'subscribeapp/list.html'
+    paginate_by = 5
+
+    # 특정 조건에 해당하는 article을 가져올 것이기 때문에 query 수정
+    def get_queryset(self):
+        projects = Subscription.objects.filter(user=self.request.user).values_list('project')   # project list화
+        article_list = Article.objects.filter(project__in=projects)     # field lookups
+        return article_list
