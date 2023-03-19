@@ -19,44 +19,43 @@
         }
 
         .container div {
-        {#width: 250px;#}
-        {#height: 500px;#}
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 1rem;
+        {#width: 250px;#}{#height: 500px;#} display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 1rem;
         }
 
         .container img {
             width: 100%;
             border-radius: 1rem;
         }
+
         {#.container .item1 { height: 200px; }#}
         {#.container .item4 { height: 800px; }#}
         {#.container .item6 { height: 600px; }#}
         {#.container .item11 { height: 400px; }#}
     </style>
     {% if article_list %}
-    <div class = "container">
+        <div class="container">
 
-        {% for article in article_list %}
-        <a href="{% url 'articleapp:detail' pk=article.pk %}">
-            {% include 'snippets/card.html' with article=article %}     {# article이 snippets 안에 있는 article과 동일하다 #}
-        </a>
-        {% endfor %}
-    </div>
+            {% for article in article_list %}
+                <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                    {% include 'snippets/card.html' with article=article %} {# article이 snippets 안에 있는 article과 동일하다 #}
+                </a>
+            {% endfor %}
+        </div>
         <script src="{% static 'js/magicgrid.js' %}"></script>
     {% else %}
-    <div style="text-align: center;">
-        <h1>No Article YET!</h1>
-    </div>
+        <div style="text-align: center;">
+            <h1>No Article YET!</h1>
+        </div>
     {% endif %}
 
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
     <div style="text-align: center; ">
         <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
-                Create Article
+            Create Article
         </a>
     </div>
 

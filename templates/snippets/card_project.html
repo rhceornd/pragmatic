@@ -1,0 +1,9 @@
+{# pragmatic/templates/snippets/card_project.html #}
+{# project 레이아웃을 바꾸는 곳 #}
+<div style="display: block; text-align: center;">
+    <img src="{{ project.image.url }}" alt="">
+    <h5 class="mt-2" style="font-family: 'NanumSquareB';">
+        {{ project.title | truncatechars:8 }}   {# 글자 길이 ...로 변환 #}
+    </h5>
+
+</div>
