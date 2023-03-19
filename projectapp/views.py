@@ -1,15 +1,19 @@
 # projectapp/views.py
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic.list import MultipleObjectMixin
 
+from articleapp.models import Article
 from projectapp.forms import ProjectCreationForm
 from projectapp.models import Project
 
-
 # Create your views here.
 
-
+@method_decorator(login_required, 'get')
+@method_decorator(login_required, 'post')
 class ProjectCreateView(CreateView):
     model = Project
     form_class = ProjectCreationForm
@@ -19,11 +23,20 @@ class ProjectCreateView(CreateView):
         return reverse('projectapp:detail', kwargs={'pk': self.object.pk})
 
 
-
-class ProjectDetailView(DetailView):
+# MultipleObjectMixin : 여러가지 object를 다룰 수 있도록 함
+class ProjectDetailView(DetailView, MultipleObjectMixin):
     model = Project
     context_object_name = 'target_project'
     template_name = 'projectapp/detail.html'
+
+    paginate_by = 25
+
+    # 어떠한 게시글을 가지고 올 것인지 작성. get_context_data는 장고에서 제공해줌, --> template에서 object_list 사용
+    def get_context_data(self, **kwargs):
+        object_list = Article.objects.filter(project=self.get_object())
+        return super(ProjectDetailView, self).get_context_data(object_list=object_list, **kwargs)
+
+
 
 
 class ProjectListView(ListView):

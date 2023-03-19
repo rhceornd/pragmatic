@@ -1,0 +1,54 @@
+{# templates/snippets/list_fragment.html #}
+
+{% load static %}
+
+
+<style>
+
+    .container {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    {#  container 안에 들어있는 a태그 수정  #}
+    .container a {
+        width: 40%;
+        max-width: 250px;
+    }
+
+    .container div {
+    {#width: 250px;#}{#height: 500px;#} display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+    }
+
+    .container img {
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+</style>
+{% if article_list %}
+    <div class="container">
+
+        {% for article in article_list %}
+            <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                {% include 'snippets/card.html' with article=article %} {# article이 snippets 안에 있는 article과 동일하다 #}
+            </a>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/magicgrid.js' %}"></script>
+{% else %}
+    <div style="text-align: center;">
+        <h1>No Article YET!</h1>
+    </div>
+{% endif %}
+
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+<div style="text-align: center; ">
+    <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
+        Create Article
+    </a>
+</div>

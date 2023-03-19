@@ -14,12 +14,12 @@
 
             {% if target_user.profile %}
                 <img src="{{ target_user.profile.image.url }}" alt=""
-                 style="height: 20rem; width: 20rem; border-radius: 10rem; margin-bottom: 2rem; object-fit: cover;">
+                     style="height: 20rem; width: 20rem; border-radius: 10rem; margin-bottom: 2rem; object-fit: cover;">
 
                 <h2 style="font-family: 'NanumSquareB'">
                     {{ target_user.profile.nickname }}
                     {% if target_user == user %}
-                        <a href="{%  url 'profileapp:update' pk=target_user.profile.pk %}">
+                        <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
                             edit
                         </a>
                     {% endif %}
@@ -32,7 +32,7 @@
                 {% if target_user == user %}
                     <a href="{% url 'profileapp:create' %}">
                         <h2 style="font-family: 'NanumSquareB'">
-                        Create Profile
+                            Create Profile
                         </h2>
                     </a>
                 {% else %}
@@ -40,7 +40,7 @@
                         No Profile
                     </h2>
                 {% endif %}
-            {%  endif %}
+            {% endif %}
 
             {% if target_user == user %}
                 <a href="{% url 'accountapp:update' pk=user.pk %}">
@@ -48,13 +48,18 @@
                         Change Info
                     </p>
                 </a><a href="{% url 'accountapp:delete' pk=user.pk %}">
-                    <p>
-                        Quit
-                    </p>
-                </a>
+                <p>
+                    Quit
+                </p>
+            </a>
             {% endif %}
         </div>
 
+        <div>
+            {% include 'snippets/list_fragment.html' with article_list=object_list %}
+        </div>
+
     </div>
+
 
 {% endblock %}
