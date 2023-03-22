@@ -145,7 +145,7 @@ STATICFILES_DIRS = [
 ]
 
 # Next 인자, redirect url, default // login or logout이 끝난 후 돌아갈 주소
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 # Default primary key field type

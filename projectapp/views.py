@@ -12,8 +12,6 @@ from projectapp.models import Project
 from subscribeapp.models import Subscription
 
 
-# Create your views here.
-
 @method_decorator(login_required, 'get')
 @method_decorator(login_required, 'post')
 class ProjectCreateView(CreateView):
@@ -37,10 +35,11 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
     def get_context_data(self, **kwargs):
         project = self.object
         user = self.request.user
-
+        # login 하고 있다면 구독하고 있는지 확인해서 Template에 넘김
         if user.is_authenticated:
             subscription = Subscription.objects.filter(user=user, project=project)
-
+        else:
+            subscription = None
         object_list = Article.objects.filter(project=self.get_object())
         return super(ProjectDetailView, self).get_context_data(object_list=object_list,
                                                                subscription=subscription,
