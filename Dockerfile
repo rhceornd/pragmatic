@@ -6,10 +6,8 @@ WORKDIR /home/
 # RUN : command실행하여 image 안에 django source code가 들어감
 RUN git clone https://github.com/rhceornd/pragmatic.git
 
-WORKDIR /home/pramatic/
-
+WORKDIR /home/pragmatic/
 RUN pip install -r requirements.txt
-
 # secretkey가 들어있는 .env file 생성
 RUN echo "SECRET_KEY=django-insecure-ndl!g^fpl(txkez_$t313=qa3%h-uov1+p^ha9!n=o*rnqj+2$" > .env
 
