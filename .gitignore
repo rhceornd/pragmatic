@@ -79,5 +79,6 @@ fabric.properties
 .DS_Store
 .idea/
 __pycache__/
-
+.env
 media/
+db.sqlite3
