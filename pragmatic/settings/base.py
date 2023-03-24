@@ -14,31 +14,24 @@ from pathlib import Path
 
 from django.urls import reverse_lazy
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 import environ
 import os
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Raises Django's ImproperlyConfigured
-# exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+# Deploy, Local 환경에 따라 다르게 설정함 ===
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
+# # Take environment variables from .env file
+# environ.Env.read_env(os.path.join(BASE_DIR, '../../.env'))
+#
+# # Raises Django's ImproperlyConfigured
+# # exception if SECRET_KEY not in os.environ
+# SECRET_KEY = env('SECRET_KEY')
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -90,16 +83,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pragmatic.wsgi.application'
 
+# Deploy, Local에 따라 다르게 설정
+# # Database
+# # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -138,6 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# python manage.py collectstatic 하면 static file이 모이는 곳
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
@@ -154,4 +149,4 @@ LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../../media')
